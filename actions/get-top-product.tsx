@@ -1,7 +1,11 @@
+import prismadb from "@/lib/db";
 import { Product } from "@/types";
-import axios from "axios";
-const getTopProduct = async (): Promise<Product[]> => {
-  const res = await axios.get(`${process.env.URL}/api/store/isTop`);
-  return res.data;
+const getTopProduct = async (): Promise<Product[] | null> => {
+  const topProduct = await prismadb.product.findMany({
+    where: {
+      isTop: true,
+    },
+  });
+  return topProduct;
 };
 export default getTopProduct;

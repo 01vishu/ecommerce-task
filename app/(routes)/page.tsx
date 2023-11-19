@@ -25,7 +25,7 @@ export default async function Home() {
         <p className="font-bold text-xl text-center py-4 sm:text-2xl md:text-3xl">
           Top Products
         </p>
-        <ProductList data={topProucts} />
+        <ProductList data={topProucts!} />
       </div>
     </main>
   );

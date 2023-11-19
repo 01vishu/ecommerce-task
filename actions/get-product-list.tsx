@@ -1,6 +1,7 @@
+import prismadb from "@/lib/db";
 import { Product } from "@/types";
 const getProductList = async (): Promise<Product[]> => {
-  const res = await fetch(`${process.env.URL}/api/store`);
-  return res.json();
+  const products = await prismadb.product.findMany();
+  return products;
 };
 export default getProductList;
